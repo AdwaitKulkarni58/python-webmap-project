@@ -17,6 +17,6 @@ def decideColor(elevation):
 map = folium.Map(location=[49.282, -123.120], tiles="Stamen Terrain")
 feature_group = folium.FeatureGroup(name="Map")
 for lat, lon, el in zip(latitude_list, longitude_list, elevation_list):
-    feature_group.add_child(folium.Marker(location=[lat, lon], popup=str(el) + " m", icon=folium.Icon(color=decideColor(el))))
+    feature_group.add_child(folium.CircleMarker(location=[lat, lon], radius=10, popup=str(el) + " m", fill_color=decideColor(el), color="orange", fill_opacity=0.8))
     map.add_child(feature_group)
 map.save("Map.html")
